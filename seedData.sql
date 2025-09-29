@@ -8,7 +8,7 @@ INSERT INTO departments (name) VALUES
 ('Business Administration'),
 ('Software Engineering');
 
--- Semesters (department_id must match above ids)
+-- Semesters
 INSERT INTO semesters (department_id, title, code, exam_date) VALUES
 (1, 'BSCS - Semester 1', 'CS-1', '2025-10-15'),
 (1, 'BSCS - Semester 3', 'CS-3', '2025-10-15'),
@@ -16,22 +16,22 @@ INSERT INTO semesters (department_id, title, code, exam_date) VALUES
 (3, 'BBA - Semester 5', 'BBA-5', '2025-10-15'),
 (4, 'SE - Semester 2', 'SE-2', '2025-10-16');
 
--- Students (more demo rows; roll_no is natural key)
+-- Students
 INSERT INTO students (semester_id, roll_no, full_name, seat_pref) VALUES
-(1, 'CS-001', 'Ali Khan', back),
+(1, 'CS-001', 'Ali Khan', NULL),
 (1, 'CS-002', 'Ayesha Ahmed', 'Front'),
-(1, 'CS-003', 'Zain Raza', middle),
+(1, 'CS-003', 'Zain Raza', NULL),
 (1, 'CS-004', 'Mariam Noor', 'Aisle'),
-(2, 'CS-101', 'Bilal Hussain', front),
+(2, 'CS-101', 'Bilal Hussain', NULL),
 (2, 'CS-102', 'Fatima Zahra', 'Back'),
-(2, 'CS-103', 'Sadia Iqbal', aisle),
-(3, 'EE-001', 'Usman Khalid', front),
+(2, 'CS-103', 'Sadia Iqbal', NULL),
+(3, 'EE-001', 'Usman Khalid', NULL),
 (3, 'EE-002', 'Hira Baloch', 'Middle'),
-(3, 'EE-003', 'Tariq Mehmood', aisle),
-(4, 'BBA-501', 'Sara Malik', back),
+(3, 'EE-003', 'Tariq Mehmood', NULL),
+(4, 'BBA-501', 'Sara Malik', NULL),
 (4, 'BBA-502', 'Hamza Tariq', 'Front'),
-(5, 'SE-201', 'Noor Jahan', middle),
-(5, 'SE-202', 'Omar Farooq', aisle);
+(5, 'SE-201', 'Noor Jahan', NULL),
+(5, 'SE-202', 'Omar Farooq', NULL);
 
 -- Rooms
 INSERT INTO rooms (code, name, capacity, rows, cols) VALUES
@@ -39,12 +39,12 @@ INSERT INTO rooms (code, name, capacity, rows, cols) VALUES
 ('R-102', 'Seminar Room', 40, 5, 8),
 ('R-201', 'Computer Lab A', 30, 5, 6);
 
--- Seating Plan (one plan)
+-- Seating Plan
 INSERT INTO seating_plans (title, plan_date, created_by, status) VALUES
 ('Midterm Exam (Oct 2025)', '2025-10-10', 'admin', 'draft');
 
--- Allocated seats (example entries)
--- Make sure student ids exist: SELECT id FROM students; adjust if your auto ids differ.
+-- Allocated seats (example assignments)
+-- NOTE: These assume the student ids are the ones auto-assigned (starting at 1).
 INSERT INTO allocated_seats (plan_id, room_id, seat_row, seat_col, student_id) VALUES
 (1, 1, 1, 1, 1),
 (1, 1, 1, 2, 2),
@@ -54,3 +54,4 @@ INSERT INTO allocated_seats (plan_id, room_id, seat_row, seat_col, student_id) V
 (1, 2, 1, 1, 8),
 (1, 2, 1, 2, 9),
 (1, 3, 1, 1, 13);
+
